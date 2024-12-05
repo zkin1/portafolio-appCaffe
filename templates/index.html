@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaffeeM - Gestión de Cafetería</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CaffeeManagement</h1>
+        </header>
+
+        <main>
+            <section class="description">
+                <h2>Descripción General</h2>
+                <p>CaffeeManagement es una aplicación móvil diseñada para dispositivos Android que simplifica la gestión integral de una cafetería, proporcionando herramientas eficientes tanto para empleados como para administradores.</p>
+            </section>
+
+            <section class="main-features">
+                <h2>Funcionalidades Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Gestión de Empleados</h3>
+                        <p>Registro, aprobación y administración del personal de manera sencilla y eficiente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Gestión de Productos</h3>
+                        <p>Sistema CRUD completo para manejo de menú con interfaz intuitiva.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Gestión de Ventas</h3>
+                        <p>Seguimiento y control detallado de las transacciones realizadas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="detailed-features">
+                <h2>Características Detalladas</h2>
+                <div class="employee-features">
+                    <h3>Para Empleados</h3>
+                    <ul>
+                        <li>
+                            <strong>Registro y Acceso</strong>
+                            <ul>
+                                <li>Formulario de registro inicial</li>
+                                <li>Aprobación del administrador para iniciar sesión</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Perfil de Usuario</strong>
+                            <ul>
+                                <li>Foto de perfil personalizable (opcional)</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Sistema de Comandas</strong>
+                            <ul>
+                                <li>Secciones: Pendientes, En Preparación, Entregadas</li>
+                                <li>Seguimiento detallado de órdenes</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="admin-features">
+                    <h3>Para Administradores</h3>
+                    <ul>
+                        <li>
+                            <strong>Gestión Avanzada</strong>
+                            <ul>
+                                <li>Control total de empleados y menú</li>
+                                <li>Generación de reportes y comunicaciones</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Dashboard Administrativo</strong>
+                            <ul>
+                                <li>Estadísticas globales de ventas</li>
+                                <li>Monitoreo de usuarios activos</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="reports">
+                <h2>Reportes Semanales</h2>
+                <ul>
+                    <li>Ventas por empleado</li>
+                    <li>Productos más vendidos</li>
+                    <li>Análisis de ventas canceladas</li>
+                </ul>
+            </section>
+
+            <section class="download-section">
+                <h2>Descarga la Aplicación</h2>
+                <div class="download-options">
+                    {% if is_mobile %}
+                    <a href="{{ download_link }}" class="btn btn-primary">
+                        Descargar APK
+                    </a>
+                {% else %}
+                    <div class="qr-download-section">
+                        {% if qr_code %}
+                            <h3>Escanea para Descargar</h3>
+                            <img src="{{ qr_code }}" alt="Código QR de Descarga" class="img-fluid" style="max-width: 300px;">
+                            <p class="mt-3">Escanea este código QR con tu dispositivo móvil</p>
+                        {% else %}
+                            <p>Error generando código QR. Por favor intenta más tarde.</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                    <div class="github-link">
+                        <a href="{{ app_info.github_repo }}" target="_blank" class="btn btn-secondary">
+                            Ver Repositorio en GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 CaffeeManagement - Solución integral para tu cafetería</p>
+        </footer>
+    </div>
+</body>
+</html>
